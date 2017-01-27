@@ -118,15 +118,12 @@ class UsersAuthComponent extends Component
             'register',
             'validateEmail',
             'resendTokenValidation',
-            'login',
-            'twitterLogin',
             'socialEmail',
             'resetPassword',
             'requestResetPassword',
             'changePassword',
             'endpoint',
             'authenticated',
-            'verify'
         ]);
     }
 

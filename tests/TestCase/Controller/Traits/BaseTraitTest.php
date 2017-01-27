@@ -15,10 +15,13 @@ use Cake\Event\Event;
 use Cake\Mailer\Email;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use CakeDC\Users\Test\TestCase\Util\MockTrait;
 use PHPUnit_Framework_MockObject_RuntimeException;
 
 abstract class BaseTraitTest extends TestCase
 {
+    use MockTrait;
+
     /**
      * Fixtures
      *
@@ -193,21 +196,5 @@ abstract class BaseTraitTest extends TestCase
             ->setMethods(['user', 'identify', 'setUser', 'redirectUrl'])
             ->disableOriginalConstructor()
             ->getMock();
-    }
-
-    /**
-     * mock utility
-     *
-     * @param Event $event event
-     * @return void
-     */
-    protected function _mockDispatchEvent(Event $event = null)
-    {
-        if (is_null($event)) {
-            $event = new Event('cool-name-here');
-        }
-        $this->Trait->expects($this->any())
-                ->method('dispatchEvent')
-                ->will($this->returnValue($event));
     }
 }

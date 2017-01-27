@@ -11,6 +11,7 @@
 
 namespace CakeDC\Users\Controller;
 
+use Cake\Event\Event;
 use CakeDC\Users\Controller\AppController;
 use CakeDC\Users\Controller\Component\UsersAuthComponent;
 use CakeDC\Users\Controller\Traits\LoginTrait;
@@ -30,10 +31,21 @@ use Cake\ORM\Table;
  */
 class UsersController extends AppController
 {
-    use LoginTrait;
     use ProfileTrait;
     use ReCaptchaTrait;
     use RegisterTrait;
     use SimpleCrudTrait;
     use SocialTrait;
+
+    /**
+     * Initialize
+     *
+     * @return void
+     */
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('CakeDC/Users.Login');
+    }
 }
